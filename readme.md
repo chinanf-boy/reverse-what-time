@@ -49,9 +49,13 @@ Type: | `string`
 Default: | ``
 Desc: | split time
 
-## concart
+## contact
 
 - [what-time](https://github.com/chinanf-boy/what-time) human readable time
+
+## use by
+
+- [keep-mac-light](https://github.com/chinanf-boy/keep-mac-light) keep macos light no down
 
 
 ## License
