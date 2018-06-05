@@ -14,8 +14,10 @@ module.exports = (time, split = '') => {
 		1
 	]
 
-	if (split && typeof time === 'string') {
+	if (split && time.includes(split)) {
 		time = time.split(split)
+	}else if(split){
+		throw new TypeError(`split:${split}, but time is no incldues`)
 	}
 
 	if (typeof time === 'string') {
@@ -27,8 +29,8 @@ module.exports = (time, split = '') => {
 				let i = time.indexOf(str)
 				if (i > -1) {
 					let n = time.substring(0, i)
-					time = time.slice(i + 1)
-					return n
+					time = time.slice(i + 1) // change source
+					return +n
 				}
 				return 0
 			}
@@ -38,7 +40,7 @@ module.exports = (time, split = '') => {
 
 			timeQueue = timeQueue.map((q,i) =>{
 
-				return (+q * timeSeconds[i])
+				return (q * timeSeconds[i])
 			})
 
 			timeQueue.forEach(seconds =>{
@@ -48,25 +50,22 @@ module.exports = (time, split = '') => {
 
 	}else if(time instanceof Array){
 		function getNum(str) {
-			return str.slice(0,-1)
+			return +str.slice(0,-1)
+		}
+		function getTimeName(str) {
+			return str.slice(-1)
 		}
 
+		let timeMap = {}
+		timeName.forEach((name,i) =>{
+			timeMap[name] = timeSeconds[i]
+		})
+
 		time = time.map(t =>{
-
-			let matchIndex
-			let secondTime = null
-			timeName.some((name,i) =>
-				{
-					let b = t.includes(name)
-					if(b){
-						matchIndex = i
-					}
-					return b
-				}
-			)
-
-			if(matchIndex >= 0){
-				secondTime = +getNum(t) * timeSeconds[matchIndex]
+			let secondTime
+			let N = getTimeName(t)
+			if(N && timeMap[N]){
+				secondTime = getNum(t) * timeMap[N]
 			}
 
 			return secondTime

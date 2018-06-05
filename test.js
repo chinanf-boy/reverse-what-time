@@ -2,7 +2,7 @@ import test from 'ava';
 import m from '.';
 const DaySeconds = 3600 * 24
 
-test.failing('boolean time false', t => {
+test.failing('boolean time false -> fail', t => {
 	let s = m(false)
 
 	t.is(s,0)
@@ -22,6 +22,12 @@ test('string time 0s', t => {
 
 test('string time 1s', t => {
 	let s = m('1s')
+
+	t.is(s,1)
+});
+
+test.failing('string time "1m1s", split=`,` ->fail', t => {
+	let s = m('1m1s',',')
 
 	t.is(s,1)
 });
