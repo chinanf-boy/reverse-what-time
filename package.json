@@ -1,6 +1,6 @@
 {
 	"name": "reverse-what-time",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"description": "reverse human readable time to number",
 	"license": "MIT",
 	"repository": "chinanf-boy/reverse-what-time",
