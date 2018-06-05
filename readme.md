@@ -25,6 +25,8 @@ const reverseWhatTime = require('reverse-what-time');
 reverseWhatTime('1Y2M1W1d3h6m44s');
 // : 1 year 2 mouths 1 week 1 day 3 hours 6 minutes 44 seconds
 // 37422404
+reverseWhatTime('1Y,2M,1W,1d,3h,6m,44s',',');
+
 ```
 
 
@@ -50,7 +52,6 @@ Desc: | split time
 ## concart
 
 - [what-time](https://github.com/chinanf-boy/what-time) human readable time
-
 
 
 ## License

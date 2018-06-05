@@ -37,6 +37,11 @@ test('string time 1Y2M1W1d3h6m44s', t => {
 	t.is(s,37422404)
 });
 
+test('Array time 1Y2M1W1d3h6m44s', t => {
+	let s = m('1Y,2M,1W,1d,3h,6m,44s',',')
+	t.is(s,37422404)
+});
+
 
 test('string time 1Y1h', t => {
 	let s = m('1Y1h')
