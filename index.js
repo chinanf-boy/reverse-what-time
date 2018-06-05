@@ -30,7 +30,11 @@ module.exports = (time, split = '') => {
 				if (i > -1) {
 					let n = time.substring(0, i)
 					time = time.slice(i + 1) // change source
-					return +n
+					if(!isNaN(+n)){
+						return +n
+					}else{
+						throw new TypeError(`${n} type must be a number, but got ${typeof n}`)
+					}
 				}
 				return 0
 			}
@@ -39,7 +43,6 @@ module.exports = (time, split = '') => {
 			})
 
 			timeQueue = timeQueue.map((q,i) =>{
-
 				return (q * timeSeconds[i])
 			})
 
@@ -50,7 +53,12 @@ module.exports = (time, split = '') => {
 
 	}else if(time instanceof Array){
 		function getNum(str) {
-			return +str.slice(0,-1)
+			let n = str.slice(0,-1)
+			if(!isNaN(+n)){
+				return +n
+			}else{
+				throw new TypeError(`${n} type must be a number, but got ${typeof n}`)
+			}
 		}
 		function getTimeName(str) {
 			return str.slice(-1)

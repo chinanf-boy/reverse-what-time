@@ -2,6 +2,18 @@ import test from 'ava';
 import m from '.';
 const DaySeconds = 3600 * 24
 
+test.failing('string time asdf0s must be number -> fail', t => {
+	let s = m('asdf0s')
+
+	t.is(s,0)
+});
+
+test.failing('Array time asdf0s must be number -> fail', t => {
+	let s = m('asd,f0s',',')
+
+	t.is(s,0)
+});
+
 test.failing('boolean time false -> fail', t => {
 	let s = m(false)
 
