@@ -31,7 +31,9 @@
 			"git add"
 		]
 	},
-	"files": [],
+	"files": [
+		"index.js"
+	],
 	"keywords": [
 		""
 	],
