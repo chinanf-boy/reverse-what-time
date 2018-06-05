@@ -1,0 +1,52 @@
+{
+	"name": "reverse-what-time",
+	"version": "0.0.0",
+	"description": "reverse human readable time to number",
+	"license": "MIT",
+	"repository": "chinanf-boy/reverse-what-time",
+	"author": {
+		"name": "chinanf-boy",
+		"email": "865501259@qq.com",
+		"url": "llever.com"
+	},
+	"engines": {
+		"node": ">=4"
+	},
+	"scripts": {
+		"test": "nyc ava -v",
+		"precommit": "lint-staged",
+		"pub": "npm run test && npm run npmUp && npm run git",
+		"npmUp": "npm version patch && npm publish",
+		"git": "git push && git push --tags"
+	},
+	"size-limit": [
+		{
+			"path": "dist/reverse-what-time.js",
+			"gzip": false
+		}
+	],
+	"lint-staged": {
+		"*.{js,json,css,md}": [
+			"prettier --single-quote --trailing-comma es5 --write",
+			"git add"
+		]
+	},
+	"files": [],
+	"keywords": [
+		""
+	],
+	"dependencies": {},
+	"devDependencies": {
+		"codecov": "^3.0.2",
+		"nyc": "^11.8.0",
+		"lint-staged": "^7.0.0",
+		"prettier": "^1.12.1",
+		"ava": "^0.25.0"
+	},
+	"nyc": {
+		"reporter": [
+			"lcov",
+			"text"
+		]
+	}
+}
